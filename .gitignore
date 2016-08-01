@@ -22,3 +22,10 @@ _testmain.go
 *.exe
 *.test
 *.prof
+
+.DS_STORE
+node_modules
+static
+.module-cache
+*.log*
+.sparkplug-bin
