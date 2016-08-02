@@ -6,6 +6,8 @@ RUN go get github.com/skeswa/sparkplug
 
 # Set the environment variables accordingly.
 ENV PORT="3000"
+ENV GAUNTLET_ENV="dev"
+ENV GAUNTLET_MIGRATIONS_PATH="/go/src/github.com/skeswa/gauntlet/db/migrations"
 
 # Mount the repository.
 VOLUME ["/go/src/github.com/skeswa/gauntlet"]
