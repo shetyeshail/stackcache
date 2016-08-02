@@ -66,6 +66,12 @@ module.exports = {
   ],
   devServer: {
     contentBase: './client',
-    hot: true
+    hot: true,
+    proxy: {
+      '/api/*': {
+        target: 'http://gauntlet-api',
+        secure: false
+      }
+    }
   }
 }
