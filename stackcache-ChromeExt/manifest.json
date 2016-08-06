@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "Stack Cache",
+  "description": "Stack Cacheing even when not on the internet to seach for common programming problems",
+  "version": "1.0",
+
+// overrides the page using our html page
+//   "chrome_url_overrides": {
+//     "pageToOverride": "search.html"
+//   },
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "search.html",
+    "default_title": "Stack Cache"
+  },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}
