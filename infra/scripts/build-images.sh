@@ -9,9 +9,9 @@ green_color=$esc_seq"32;01m"
 
 # Create requisite variables.
 project_root="$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )"
-image_name_db="gauntlet-db"
-image_name_api="gauntlet-api"
-image_name_web="gauntlet-web"
+image_name_db="cachestack-db"
+image_name_api="cachestack-api"
+image_name_web="cachestack-web"
 
 # Create an exit hook.
 function on_premature_exit {
