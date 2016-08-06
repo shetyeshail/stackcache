@@ -1,5 +1,3 @@
-FROM postgres:latest
+FROM elasticsearch:latest
 
-ENV POSTGRES_DB="gauntlet"
-ENV POSTGRES_USER="gauntlet-admin"
-ENV POSTGRES_PASSWORD="getmandisagoodatsatmath"
+CMD elasticsearch -Des.node.name="cachestack"

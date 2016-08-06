@@ -4,8 +4,8 @@ FROM node:latest
 ENV PORT="3000"
 
 # Mount the repository.
-VOLUME ["/go/src/github.com/skeswa/gauntlet"]
-WORKDIR /go/src/github.com/skeswa/gauntlet
+VOLUME ["/code"]
+WORKDIR /code
 
 # Expose port for HTTP.
 EXPOSE 3000

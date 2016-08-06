@@ -9,13 +9,13 @@ green_color=$esc_seq"32;01m"
 
 # Create requisite variables.
 project_root="$( dirname $( dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ) ) )"
-image_name_db="gauntlet-db"
-image_name_api="gauntlet-api"
-image_name_web="gauntlet-web"
-db_volume_name="gauntlet-db-volume"
-container_name_db="gauntlet-db"
-container_name_api="gauntlet-api"
-container_name_web="gauntlet-web"
+image_name_db="cachestack-db"
+image_name_api="cachestack-api"
+image_name_web="cachestack-web"
+db_volume_name="cachestack-db-volume"
+container_name_db="cachestack-db"
+container_name_api="cachestack-api"
+container_name_web="cachestack-web"
 
 # Create an exit hook.
 function on_premature_exit {
@@ -35,9 +35,9 @@ image_tags=('latest' 'latest' 'latest')
 image_names=($image_name_db $image_name_api $image_name_web)
 image_paths=("$project_root/infra/images/db" "$project_root/infra/images/api" "$project_root/infra/images/web")
 image_run_args=(
-  "-v $db_volume_name:/var/lib/postgresql/data"
-  "-v $project_root:/go/src/github.com/skeswa/gauntlet --link $container_name_db:$container_name_db"
-  "-p 80:3000 -v $project_root:/go/src/github.com/skeswa/gauntlet --link $container_name_api:$container_name_api")
+  "-v $db_volume_name:/usr/share/elasticsearch/data"
+  "-v $project_root:/code"
+  "-p 80:3000 -v $project_root:/code --link $container_name_api")
 container_names=($container_name_db $container_name_api $container_name_web)
 
 # Start each of the containers.

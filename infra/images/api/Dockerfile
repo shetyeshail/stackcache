@@ -1,22 +1,16 @@
-FROM golang:alpine
+FROM node:latest
 
-# Install sparkplug.
-RUN set -ex && apk add --update 'git'
-RUN go get github.com/skeswa/sparkplug
+RUN npm install -g nodemon
 
 # Set the environment variables accordingly.
 ENV PORT="3000"
-ENV GAUNTLET_ENV="dev"
-ENV GAUNTLET_MIGRATIONS_PATH="/go/src/github.com/skeswa/gauntlet/db/migrations"
 
 # Mount the repository.
-VOLUME ["/go/src/github.com/skeswa/gauntlet"]
-WORKDIR /go/src/github.com/skeswa/gauntlet
+VOLUME ["/code"]
+WORKDIR /code
 
 # Expose port for HTTP.
 EXPOSE 3000
 
 # Start the api.
-CMD cd ./api \
- && go get -d -v \
- && sparkplug
+CMD cd api && npm install && nodemon index.js

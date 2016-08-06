@@ -7,9 +7,9 @@ blue_color=$esc_seq"34;01m"
 green_color=$esc_seq"32;01m"
 
 # Create requisite variables.
-container_name_db="gauntlet-db"
-container_name_api="gauntlet-api"
-container_name_web="gauntlet-web"
+container_name_db="cachestack-db"
+container_name_api="cachestack-api"
+container_name_web="cachestack-web"
 
 # Create arrays for container metadata.
 container_names=($container_name_db $container_name_api $container_name_web)
