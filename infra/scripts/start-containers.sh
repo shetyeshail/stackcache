@@ -36,8 +36,8 @@ image_names=($image_name_db $image_name_api $image_name_web)
 image_paths=("$project_root/infra/images/db" "$project_root/infra/images/api" "$project_root/infra/images/web")
 image_run_args=(
   "-v $db_volume_name:/usr/share/elasticsearch/data"
-  "-v $project_root:/code"
-  "-p 80:3000 -v $project_root:/code --link $container_name_api")
+  "-v $project_root:/code --link $container_name_db"
+  "-p 3000:3000 -v $project_root:/code --link $container_name_api")
 container_names=($container_name_db $container_name_api $container_name_web)
 
 # Start each of the containers.

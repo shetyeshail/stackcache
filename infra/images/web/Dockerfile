@@ -12,5 +12,5 @@ EXPOSE 3000
 
 # Start the web server.
 CMD cd ./web \
- && npm install \
+ && npm install --no-bin-links \
  && npm start
