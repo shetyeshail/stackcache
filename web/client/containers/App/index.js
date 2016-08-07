@@ -35,16 +35,16 @@ class App extends Component {
   getSearchResult(){
     console.log(this.refs.textBox.value);
     var queryJSON = {
-      q : this.refs.textBox.value
+      q: '' + this.refs.textBox.value
     };
-    request.post({
-      url: "/api/documents/search",
-      json: queryJSON
-    }, (err, res, body) => {
+    request.get("/api/documents")
+    .send(queryJSON)
+    .end(function(err, res){
       if(err){
-        console.log('error happened here');
+        console.log('something went wrong')
       }
     });
+
   }
 
   render() {

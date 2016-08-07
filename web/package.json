@@ -37,6 +37,7 @@
     "redux-actions": "^0.9.1"
   },
   "dependencies": {
-    "superagent": "^2.1.0"
+    "superagent": "^2.1.0",
+    "superagent-promise": "^1.1.0"
   }
 }
