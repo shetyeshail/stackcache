@@ -1,0 +1,17 @@
+{
+  "name": "stackcache-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+  	"request": "*",
+  	"superagent": "*",
+  	"website-scraper": "*",
+    "express": "*"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -9,6 +9,9 @@
 //   "chrome_url_overrides": {
 //     "pageToOverride": "search.html"
 //   },
+  "background": {
+    "scripts": ["search.js"]
+  },
 
   "browser_action": {
     "default_icon": "icon.png",
@@ -17,6 +20,7 @@
   },
   "permissions": [
     "activeTab",
+    "tabs",
     "https://ajax.googleapis.com/"
   ]
 }
