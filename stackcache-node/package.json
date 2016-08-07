@@ -8,7 +8,8 @@
   },
   "dependencies": {
   	"request": "*",
-  	"superagent": "*"
+  	"superagent": "*",
+  	"website-scraper": "*"
   },
   "author": "",
   "license": "ISC"
