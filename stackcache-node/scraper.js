@@ -1,7 +1,7 @@
 var scraper = require('website-scraper');
 scraper.scrape({
   urls: [
-    'http://nodejs.org/',	// Will be saved with default filename 'index.html' 
+    'http://nodejs.org/',	// Will be saved with default filename 'index.html'
     {url: 'http://nodejs.org/about', filename: 'about.html'},
     {url: 'http://blog.nodejs.org/', filename: 'blog.html'}
   ],

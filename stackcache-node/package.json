@@ -9,7 +9,8 @@
   "dependencies": {
   	"request": "*",
   	"superagent": "*",
-  	"website-scraper": "*"
+  	"website-scraper": "*",
+    "express": "*"
   },
   "author": "",
   "license": "ISC"
