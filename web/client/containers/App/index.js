@@ -8,32 +8,55 @@ import * as TodoActions from '../../actions/todos'
 import style from './style.css'
 import SearchResult from '../../components/SearchResult'
 
+import request from 'superagent';
+
 class App extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      searchResult: [
+        {
+          title: "dfdf",
+          content: "dsfasddfefrhjkl;frsdfhjkl;jio;34r534789789r347890347892345789034578902345789078903457890234578902345"
+        },
+        {
+          title: "dfdf",
+          content: "dsfasddf"
+        },
+        {
+          title: "dfdf",
+          content: "dsfasddf"
+        },
+      ]
+    };
+    this.getSearchResult = this.getSearchResult.bind(this);
+  }
+
+  getSearchResult(){
+    console.log(this.refs.textBox.value);
+    var queryJSON = {
+      q : this.refs.textBox.value
+    };
+    request.post({
+      url: "/api/documents/search",
+      json: queryJSON
+    }, (err, res, body) => {
+      if(err){
+        console.log('error happened here');
+      }
+    });
+  }
 
   render() {
-    var sample = [
-      {
-        title: "dfdf",
-        content: "dsfasddfefrhjkl;frsdfhjkl;jio;34r534789789r347890347892345789034578902345789078903457890234578902345"
-      },
-      {
-        title: "dfdf",
-        content: "dsfasddf"
-      },
-      {
-        title: "dfdf",
-        content: "dsfasddf"
-      },
-    ]
 
     const { todos, actions, children } = this.props
     return (
       <div className={style.normal}>
-        <input className={style.searchbox} type="text"/>
-        <input className={style.searchbutton} type="submit"/>
+        <input ref="textBox" className={style.searchbox} type="text"/>
+        <input className={style.searchbutton} onClick={this.getSearchResult} type="submit"/>
         <div className={style.resultscontainer}>
-        {sample.map((d) => {
-          return <SearchResult title={d.title} content={d.content}/>
+        {this.state.searchResult.map((d, i) => {
+          return <SearchResult key={i} title={d.title} content={d.content}/>
         })}
         </div>
       </div>
