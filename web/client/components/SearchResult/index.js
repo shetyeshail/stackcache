@@ -14,8 +14,10 @@ class SearchResult extends Component{
   render() {
     return (
       <div className={style.normal}>
-        <h3>this.props.title</h3>
-        <p>this.props.content</p>
+        <h3>{this.props.title}</h3>
+        <div className={style.bodyContainer}>
+          <p>{this.props.content}</p>
+        </div>
       </div>
     );
   }
