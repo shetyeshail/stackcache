@@ -38,10 +38,13 @@ class App extends Component {
       q: '' + this.refs.textBox.value
     };
     request.get("/api/documents")
-    .send(queryJSON)
+    .set(queryJSON)
+    //.set('Accept', 'application/json')
     .end(function(err, res){
       if(err){
         console.log('something went wrong')
+      }else{
+        console.log(res);
       }
     });
 
