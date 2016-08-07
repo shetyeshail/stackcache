@@ -40,11 +40,15 @@ class App extends Component {
     request.get("/api/documents")
     .set(queryJSON)
     //.set('Accept', 'application/json')
-    .end(function(err, res){
+    .end((err, res) => {
       if(err){
         console.log('something went wrong')
       }else{
-        console.log(res);
+        console.log(res.text);
+        var resultArray = JSON.parse(res.text);
+        this.setState({
+          searchResult: resultArray
+        });
       }
     });
 
