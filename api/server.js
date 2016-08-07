@@ -19,8 +19,8 @@ app.use(cookieParser());
 
 /******************************* ELASTIC SEARCH *******************************/
 
-// const dbHost = 'cachestack-db:9200';
-const dbHost = 'localhost:9200';
+const dbHost = 'cachestack-db:9200';
+// const dbHost = 'localhost:9200'; // Use this when outside a docker container.
 
 function indexExists() {
   console.log('Checking if the index exists...');
