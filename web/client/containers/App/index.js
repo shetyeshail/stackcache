@@ -8,6 +8,8 @@ import * as TodoActions from '../../actions/todos'
 import style from './style.css'
 import SearchResult from '../../components/SearchResult'
 
+import request from 'superagent';
+
 class App extends Component {
   constructor(props, context) {
     super(props, context);
@@ -27,6 +29,22 @@ class App extends Component {
         },
       ]
     };
+    this.getSearchResult = this.getSearchResult.bind(this);
+  }
+
+  getSearchResult(){
+    console.log(this.refs.textBox.value);
+    var queryJSON = {
+      q : this.refs.textBox.value
+    };
+    request.post({
+      url: "/api/documents/search",
+      json: queryJSON
+    }, (err, res, body) => {
+      if(err){
+        console.log('error happened here');
+      }
+    });
   }
 
   render() {
@@ -34,8 +52,8 @@ class App extends Component {
     const { todos, actions, children } = this.props
     return (
       <div className={style.normal}>
-        <input className={style.searchbox} type="text"/>
-        <input className={style.searchbutton} type="submit"/>
+        <input ref="textBox" className={style.searchbox} type="text"/>
+        <input className={style.searchbutton} onClick={this.getSearchResult} type="submit"/>
         <div className={style.resultscontainer}>
         {this.state.searchResult.map((d, i) => {
           return <SearchResult key={i} title={d.title} content={d.content}/>
