@@ -1,9 +1,16 @@
 .normal{
-  border: 1px solid black;
-  color: red;
+  margin-bottom: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 .bodyContainer{
   height: 300px;
   overflow: auto;
+}
+
+.normal h3{
+  margin-left: 15px;
+}
+.normal p{
+  margin-left: 15px;
 }

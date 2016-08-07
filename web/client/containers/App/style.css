@@ -7,10 +7,13 @@ body {
 
 .searchbox {
   width: 70%;
+  height: 20px;
 }
 
 .searchbutton {
-  width: 10%;
+  margin-left: 10px;
+  width: 100px;
+  height: 20px;
 }
 
 button {

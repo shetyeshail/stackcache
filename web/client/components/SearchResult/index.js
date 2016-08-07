@@ -9,11 +9,16 @@ class SearchResult extends Component{
     this.state = {
       text: this.props.text || ''
     }
+    this.openLink = this.openLink.bind(this);
+  }
+
+  openLink(){
+    this.props.url;
   }
 
   render() {
     return (
-      <div className={style.normal}>
+      <div className={style.normal} onClick={this.openLink}>
         <h3>{this.props.title}</h3>
         <div className={style.bodyContainer}>
           <p>{this.props.content}</p>

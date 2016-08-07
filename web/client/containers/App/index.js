@@ -15,18 +15,7 @@ class App extends Component {
     super(props, context);
     this.state = {
       searchResult: [
-        {
-          title: "dfdf",
-          content: "dsfasddfefrhjkl;frsdfhjkl;jio;34r534789789r347890347892345789034578902345789078903457890234578902345"
-        },
-        {
-          title: "dfdf",
-          content: "dsfasddf"
-        },
-        {
-          title: "dfdf",
-          content: "dsfasddf"
-        },
+
       ]
     };
     this.getSearchResult = this.getSearchResult.bind(this);
@@ -63,7 +52,7 @@ class App extends Component {
         <input className={style.searchbutton} onClick={this.getSearchResult} type="submit"/>
         <div className={style.resultscontainer}>
         {this.state.searchResult.map((d, i) => {
-          return <SearchResult key={i} title={d.title} content={d.content}/>
+          return <SearchResult key={i} title={d.title} content={d.content} url={d.url}/>
         })}
         </div>
       </div>
