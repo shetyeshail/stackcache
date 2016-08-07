@@ -36,7 +36,7 @@ function requestStack() {
                 
                 var promises = stuff.toString()
                   .split('\n')
-                  .map(link => scrapeStack(link, "sometestdir"));
+                  .map((link) => scrapeStack(link, item.question_id));
 
                 return Promise.all(promises);
             })

@@ -13,7 +13,8 @@
     "cookie-parser": "^1.4.3",
     "elasticsearch": "^11.0.1",
     "express": "^4.14.0",
-    "jade": "^1.11.0",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "superagent": "^2.1.0",
+    "superagent-promise": "^1.1.0"
   }
 }
