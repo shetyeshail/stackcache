@@ -37,6 +37,17 @@ function indexExists() {
 }
 exports.indexExists = indexExists;
 
+function indexSearch(q){
+  return elasticClient.search({
+    query: {
+      query_string: {
+        query : q
+      }
+    }
+  });
+}
+exports.indexSearch = indexSearch;
+
 function initMapping() {
     return elasticClient.indices.putMapping({
         index: indexName,
@@ -44,12 +55,8 @@ function initMapping() {
         body: {
             properties: {
                 title: { type: "string" },
-                content: { type: "string" },
-                suggest: {
-                    type: "completion",
-                    analyzer: "simple",
-                    search_analyzer: "simple",
-                    payloads: true
+                content: {
+                  type: "string",
                 }
             }
         }
@@ -58,6 +65,11 @@ function initMapping() {
 exports.initMapping = initMapping;
 
 function addDocument(document) {
+    // {
+    //   title:"",
+    //   content:"",
+    //   url:""
+    // }
     return elasticClient.index({
         index: indexName,
         type: "document",
