@@ -36,7 +36,7 @@ function createIndex() {
       mappings: {
         document: {
           properties: {
-            path: { type: 'string', index: 'not_analyzed' },
+            path: { type: 'string'},
             title: { type: 'string' },
             content: { type: 'string' },
             dateIndexed: { type: 'string', index: 'not_analyzed' },

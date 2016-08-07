@@ -4,16 +4,35 @@ body {
   margin: 0;
   padding: 0;
 }
+.header{
+  margin-left: 300px;
+}
+
+.headerText{
+  float: left;
+  color: #71D09F;
+  font-size: 16pt;
+  margin-top: 4px;
+}
+
+.headerContainer{
+  background-color: #8f8f8f;
+}
 
 .searchbox {
   width: 70%;
   height: 20px;
+  background: #d6d6d6;
+  border: none;
+  margin-bottom: 2px;
 }
 
 .searchbutton {
   margin-left: 10px;
   width: 100px;
   height: 20px;
+  background: #d6d6d6;
+  border: none;
 }
 
 button {

@@ -29,3 +29,4 @@ static
 .module-cache
 *.log*
 .sparkplug-bin
+cacheData/

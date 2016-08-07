@@ -48,8 +48,15 @@ class App extends Component {
     const { todos, actions, children } = this.props
     return (
       <div className={style.normal}>
-        <input ref="textBox" className={style.searchbox} type="text"/>
-        <input className={style.searchbutton} onClick={this.getSearchResult} type="submit"/>
+        <div className={style.headerContainer}>
+          <div className={style.headerText}>
+            <span>CacheStack</span>
+          </div>
+          <div className={style.header}>
+            <input ref="textBox" className={style.searchbox} type="text"/>
+            <input className={style.searchbutton} onClick={this.getSearchResult} type="submit"/>
+          </div>
+        </div>
         <div className={style.resultscontainer}>
         {this.state.searchResult.map((d, i) => {
           return <SearchResult key={i} title={d.title} content={d.content} url={d.url}/>
