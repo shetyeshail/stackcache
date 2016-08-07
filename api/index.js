@@ -4,6 +4,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var ElasticIndex = require('./elasticSearchindex.js');
+var addDocument = ElasticIndex.addDocument;
 var app = express();
 
 
@@ -14,28 +16,26 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.get('/api/test', (req, res) => {
-  res.send('hello world');
-});
-
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-
-app.use(function (err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: err
+app.post('/api/documents', (req, res) => {
+  addDocument({
+    title: req.body.title,
+    content: req.body.content,
+    url: req.body.url
+  }).then(() => {
+    res.send();
+  }).catch((err) => {
+    res.status(500).send(err);
   });
+
+});
+
+app.get('/api/documents/search', (req, res) =>{
+  ElasticIndex.indexSearch(req.query.q).then((suggestions) => {
+    res.json(suggestions);
+  }).catch((err) => {
+    res.status(500).send(err);
+  });
+  //res.json({some: "dsf"});
 });
 
 
@@ -74,6 +74,15 @@ elastic.indexExists().then(function (exists) {
 
 module.exports = app;
 */
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000!');
+
+ElasticIndex.indexExists().then(function (exists) {
+  if (exists) {
+    return ElasticIndex.deleteIndex();
+  }
+}).then(function () {
+  return ElasticIndex.initIndex().then(ElasticIndex.initMapping).then(function () {
+    app.listen(3000, () => {
+      console.log('Example app listening on port 3000!');
+    });
+  });
 });
