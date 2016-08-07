@@ -14,7 +14,7 @@ class App extends Component {
     var sample = [
       {
         title: "dfdf",
-        content: "dsfasddf"
+        content: "dsfasddfefrhjkl;frsdfhjkl;jio;34r534789789r347890347892345789034578902345789078903457890234578902345"
       },
       {
         title: "dfdf",
