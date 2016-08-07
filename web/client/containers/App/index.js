@@ -9,22 +9,27 @@ import style from './style.css'
 import SearchResult from '../../components/SearchResult'
 
 class App extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      searchResult: [
+        {
+          title: "dfdf",
+          content: "dsfasddfefrhjkl;frsdfhjkl;jio;34r534789789r347890347892345789034578902345789078903457890234578902345"
+        },
+        {
+          title: "dfdf",
+          content: "dsfasddf"
+        },
+        {
+          title: "dfdf",
+          content: "dsfasddf"
+        },
+      ]
+    };
+  }
 
   render() {
-    var sample = [
-      {
-        title: "dfdf",
-        content: "dsfasddfefrhjkl;frsdfhjkl;jio;34r534789789r347890347892345789034578902345789078903457890234578902345"
-      },
-      {
-        title: "dfdf",
-        content: "dsfasddf"
-      },
-      {
-        title: "dfdf",
-        content: "dsfasddf"
-      },
-    ]
 
     const { todos, actions, children } = this.props
     return (
@@ -32,8 +37,8 @@ class App extends Component {
         <input className={style.searchbox} type="text"/>
         <input className={style.searchbutton} type="submit"/>
         <div className={style.resultscontainer}>
-        {sample.map((d) => {
-          return <SearchResult title={d.title} content={d.content}/>
+        {this.state.searchResult.map((d, i) => {
+          return <SearchResult key={i} title={d.title} content={d.content}/>
         })}
         </div>
       </div>
