@@ -59,7 +59,7 @@ class App extends Component {
         </div>
         <div className={style.resultscontainer}>
         {this.state.searchResult.map((d, i) => {
-          return <SearchResult key={i} title={d.title} content={d.content} url={d.url}/>
+          return <SearchResult key={i} title={d.title} content={d.content} url={d.path}/>
         })}
         </div>
       </div>

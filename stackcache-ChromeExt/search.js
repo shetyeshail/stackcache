@@ -4,8 +4,7 @@ chrome.tabs.query({ currentWindow: true, active: true }, function(tab) {
         alert("Online");
     } else {
         alert("offline");
-        chrome.tabs.update(tab.id, { url: "http://localhost:3000" });        
+        chrome.tabs.update(tab.id, { url: "http://cachestack.io:3000/" });        
     }
 
 });
-

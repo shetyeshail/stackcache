@@ -16,7 +16,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use('/cacheData', express.static(path.join(__dirname,'..', 'cacheData')));
 /******************************* ELASTIC SEARCH *******************************/
 
 const dbHost = 'cachestack-db:9200';
@@ -36,7 +36,7 @@ function createIndex() {
       mappings: {
         document: {
           properties: {
-            path: { type: 'string'},
+            path: { type: 'string', index: 'not_analyzed' },
             title: { type: 'string' },
             content: { type: 'string' },
             dateIndexed: { type: 'string', index: 'not_analyzed' },
@@ -46,6 +46,12 @@ function createIndex() {
     })
     .end();
 }
+
+function deleteIndex() {
+  console.log('deleting the index...');
+  return agent.del(`http://${dbHost}/documents`).end();
+}
+
 
 function connectToIndex() {
   console.log('Connecting to the index...');
@@ -110,6 +116,12 @@ app.get('/api/documents', (req, res) => {
     .catch(err => res.status(500).json(err));
 });
 
+app.post('/api/documents/delete', (req, res) => {
+  deleteIndex()
+    .then(createIndex)
+    .then(results => res.status(200).send())
+    .catch(err => res.status(500).json(err));
+});
 /*********************************** SERVER ***********************************/
 
 exports.start = function() {

@@ -13,7 +13,10 @@ class SearchResult extends Component{
   }
 
   openLink(){
-    this.props.url;
+    console.log(this.props.url);
+
+    var win = window.open(this.props.url, '_blank');
+    win.focus();
   }
 
   render() {
